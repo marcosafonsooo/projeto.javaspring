@@ -70,4 +70,13 @@ public class AlunoController {
     public ResponseEntity<List<Aluno>> listarTodosAlunos() {
         return ResponseEntity.ok(alunoService.listarTodos());
     }
+
+    // 🔹 Buscar aluno por ID
+    @GetMapping("/{id}")
+    public ResponseEntity<Aluno> buscarAlunoPorId(@PathVariable Integer id) {
+        Aluno aluno = alunoService.buscarAlunoPorId(id);
+        return ResponseEntity.ok(aluno);
+    }
+
+
 }

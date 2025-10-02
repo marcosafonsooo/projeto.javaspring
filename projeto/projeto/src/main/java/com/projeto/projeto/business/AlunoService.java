@@ -76,4 +76,9 @@ public class AlunoService {
     public List<Aluno> listarTodos() {
         return alunoRepository.findAll();
     }
+
+    public Aluno buscarAlunoPorId(Integer id) {
+        return alunoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+    }
 }

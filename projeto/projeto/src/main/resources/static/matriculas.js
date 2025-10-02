@@ -45,9 +45,9 @@ async function carregarCursos() {
   });
 }
 
-// 📝 Matricular aluno em curso
+// 📝 Matricular aluno em curso (com verificação de duplicidade)
 matriculaForm.addEventListener("submit", async (e) => {
-  e.preventDefault(); // impede o refresh da página
+  e.preventDefault(); // impede refresh
 
   const alunoId = alunoSelect.value;
   const cursoId = cursoSelect.value;
@@ -57,10 +57,25 @@ matriculaForm.addEventListener("submit", async (e) => {
     return;
   }
 
-  const url = `${alunosAPI}/${alunoId}/matricular/${cursoId}`;
-  const resp = await fetch(url, { method: "PUT" });
+  // ⚡ Verifica se o aluno já está matriculado no curso selecionado
+  const respAluno = await fetch(`${alunosAPI}/${alunoId}`);
+  if (!respAluno.ok) {
+    alert("Erro ao buscar dados do aluno!");
+    return;
+  }
+  const aluno = await respAluno.json();
+  const jaMatriculado = aluno.cursos?.some(curso => curso.id == cursoId);
 
-  if (resp.ok) {
+  if (jaMatriculado) {
+    alert("Este aluno já está matriculado nesse curso!");
+    return;
+  }
+
+  // 🟢 Se não estiver, faz a matrícula
+  const url = `${alunosAPI}/${alunoId}/matricular/${cursoId}`;
+  const respMatricula = await fetch(url, { method: "PUT" });
+
+  if (respMatricula.ok) {
     alert("Matrícula realizada com sucesso!");
     carregarTabela();
     matriculaForm.reset();
