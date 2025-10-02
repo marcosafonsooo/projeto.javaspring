@@ -1,7 +1,9 @@
 package com.projeto.projeto.infrastructure.entitys;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -10,7 +12,9 @@ import lombok.*;
 @Builder
 @Table(name = "aluno")
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Aluno {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -21,6 +25,14 @@ public class Aluno {
     @Column(name = "nome", length = 200)
     private String nome;
 
-    @Column(name = "senha", length = 200) // 👈 novo campo
+    @Column(name = "senha", length = 200)
     private String senha;
+
+    @ManyToMany
+    @JoinTable(
+            name = "aluno_curso",
+            joinColumns = @JoinColumn(name = "aluno_id"),
+            inverseJoinColumns = @JoinColumn(name = "curso_id")
+    )
+    private List<Curso> cursos;
 }

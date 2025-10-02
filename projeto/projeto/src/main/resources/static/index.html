@@ -1,83 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Gerenciar Alunos</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Fonte moderna do Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-          font-family: "Poppins", sans-serif;
-          background: linear-gradient(135deg, #6a11cb, #2575fc); /* roxo → azul */
-          margin: 0;
-          padding: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 100vh;
-          color: #fff;
-        }
-
-        .container {
-          background: rgba(255, 255, 255, 0.12);
-          backdrop-filter: blur(14px);
-          border-radius: 18px;
-          padding: 45px 40px;
-          text-align: center;
-          width: 360px;
-          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-          animation: fadeIn 0.8s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        h1 {
-          margin-bottom: 35px;
-          font-size: 28px;
-          font-weight: 600;
-          color: #ffffff; /* branco fixo */
-          letter-spacing: 1px;
-        }
-
-        .menu {
-          display: flex;
-          flex-direction: column;
-          gap: 18px;
-        }
-
-        .menu button {
-          padding: 14px;
-          font-size: 16px;
-          font-weight: 600;
-          border: none;
-          border-radius: 10px;
-          cursor: pointer;
-          background: #fff;
-          color: #2575fc;
-          transition: all 0.3s ease;
-        }
-
-        .menu button:hover {
-          background: #6a11cb;
-          color: #fff;
-          transform: scale(1.05);
-          box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-        }
-    </style>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Painel - Sistema Acadêmico</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
-    <h1>Gerenciar Alunos</h1>
+
+<main class="index-container">
+    <h1>🎓 Sistema Acadêmico</h1>
+    <p>
+        Bem-vindo ao painel de gestão acadêmica.<br>
+        Escolha uma das seções abaixo para começar.
+    </p>
+
     <div class="menu">
-        <button onclick="location.href='criar.html'">Adicionar Aluno</button>
-        <button onclick="location.href='atualizar.html'">Atualizar Aluno</button>
-        <button onclick="location.href='deletar.html'">Deletar Aluno</button>
-        <button onclick="location.href='buscar.html'">Buscar Aluno</button>
+        <a href="alunos.html">👨‍🎓 Alunos</a>
+        <a href="cursos.html">📚 Cursos</a>
+        <a href="matriculas.html">📝 Matrículas</a>
     </div>
-</div>
+</main>
+
+<footer>© 2025 - Painel Acadêmico</footer>
+
 </body>
 </html>
